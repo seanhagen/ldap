@@ -1,27 +1,12 @@
-Basic LDAP v3 functionality for the GO programming language.  
+This fork is so that this library actually works for me.
 
-Required Libraries: 
-   github.com/mmitton/asn1-ber
+In conn.go on lines 242-243 this is what is in mmitton's version:
 
-Working:
-   Connecting to LDAP server
-   Binding to LDAP server
-   Searching for entries
-   Compiling string filters to LDAP filters
-   Paging Search Results
-   Mulitple internal goroutines to handle network traffic
-      Makes library goroutine safe
-      Can perform multiple search requests at the same time and return
-         the results to the proper goroutine.  All requests are blocking
-         requests, so the goroutine does not need special handling
+`
+					go func() { chanResult <- message_packet.Packet }()
+					//chanResult <- message_packet.Packet
+`
 
-Tests Implemented:
-   Filter Compile / Decompile
+In order for this library to work for me, I had to switch which lines are commented out.
 
-TODO:
-   Modify Requests / Responses
-   Add Requests / Responses
-   Delete Requests / Responses
-   Modify DN Requests / Responses
-   Compare Requests / Responses
-   Implement Tests / Benchmarks
+If you want to see the full readme, check out [mmitton's version](http://github.com/mmitton/ldap).
