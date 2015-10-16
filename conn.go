@@ -259,7 +259,10 @@ func (l *Conn) closeAllChannels() {
 		if l.Debug {
 			fmt.Printf("Closing channel for MessageID %d\n", MessageID)
 		}
-		close(Channel)
+		if Channel != nil {
+			fmt.Println("Channel to close: ", Channel)
+			close(Channel)
+		}
 		l.chanResults[MessageID] = nil
 	}
 	close(l.chanMessageID)
